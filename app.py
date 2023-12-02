@@ -13,7 +13,6 @@ import json
 from keras.preprocessing.text import tokenizer_from_json
 import langid
 from langdetect import detect
-from tensorflow.keras.optimizers import Adam
 st.title('Sentiment Analysis English vs French')
 sentences = st.text_area("saisis le text", placeholder="Entrer votre text")
 #sentences=text_cleaning(sentences)
