@@ -5,13 +5,11 @@ from tensorflow.keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import streamlit  # 👈 Add the caching decorator
-import keras_tuner as kt
-from keras.models import Sequential
-from keras.layers import Dense, Embedding, LSTM, Bidirectional, Dropout
+
+
 import nltk
 nltk.download('stopwords')
-from tensorflow.keras.layers import GRU
-from tensorflow.keras.optimizers import Adam
+
 import numpy as np
 from data_cleaning import text_cleaning
 import json
