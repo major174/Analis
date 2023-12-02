@@ -1,0 +1,13 @@
+# requirements.txt
+streamlit
+tensorflow==2.8
+keras
+keras-tuner
+nltk
+langdetect
+numpy
+pandas
+matplotlib
+protobuf==3.20.x
+
+
