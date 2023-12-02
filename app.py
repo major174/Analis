@@ -5,25 +5,22 @@ from tensorflow.keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import streamlit  # 👈 Add the caching decorator
-
-
 import nltk
 nltk.download('stopwords')
-
 import numpy as np
 from data_cleaning import text_cleaning
 import json
 from keras.preprocessing.text import tokenizer_from_json
 import langid
 from langdetect import detect
-
+from keras.optimizers import Adam
 st.title('Sentiment Analysis English vs French')
-sentences = st.text_area("", placeholder="Entrer votre text")
+sentences = st.text_area("saisis le text", placeholder="Entrer votre text")
 #sentences=text_cleaning(sentences)
 from util import config
 import streamlit as st
 
-import streamlit as st
+
 
 # Définir la taille de la police souhaitée
 font_size = "30px"
@@ -72,7 +69,7 @@ if st.button('Analyse sentiment',type='primary'):
                 #sentences = st.text_input("Enter text in French")
         processed_data = my_reprocess([sentences])
 
-        model = load_model('./model/modelestop1.h5')
+        model = load_model('./model/modelestop1.h5',custom_objects={'optimizer_name': Adam})
         y_pred = model.predict(processed_data)
 
         # Interpret the prediction
@@ -110,7 +107,7 @@ if st.button('Analyse sentiment',type='primary'):
             #sentences = st.text_input("Enter text in French")
         processed_data = my_reprocess([sentences])
 
-        model = load_model('./model/modele_french.h5')
+        model = load_model('./model/modele_french.h5',custom_objects={'optimizer_name': Adam})
         y_pred = model.predict(processed_data)
 
                 # Interpret the prediction
