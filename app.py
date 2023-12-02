@@ -5,6 +5,7 @@ from tensorflow.keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import streamlit  # 👈 Add the caching decorator
+import tensorflow as tf 
 import nltk
 nltk.download('stopwords')
 import numpy as np
@@ -68,7 +69,7 @@ if st.button('Analyse sentiment',type='primary'):
                 #sentences = st.text_input("Enter text in French")
         processed_data = my_reprocess([sentences])
 
-        model = tensorflow.keras.models.load_model('./model/modelestop1.h5',compile=False)
+        model = tf.keras.models.load_model('./model/modelestop1.h5',compile=False)
         y_pred = model.predict(processed_data)
 
         # Interpret the prediction
@@ -106,7 +107,7 @@ if st.button('Analyse sentiment',type='primary'):
             #sentences = st.text_input("Enter text in French")
         processed_data = my_reprocess([sentences])
 
-        model = tensorflow.keras.models.load_model('./model/modele_french.h5',compile=False)
+        model = tf.keras.models.load_model('./model/modele_french.h5',compile=False)
         y_pred = model.predict(processed_data)
 
                 # Interpret the prediction
