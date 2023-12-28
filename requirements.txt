@@ -1,6 +1,6 @@
 # requirements.txt
 streamlit
-tensorflow==2.7
+tensorflow
 keras
 keras-tuner
 nltk
@@ -10,5 +10,5 @@ pandas
 matplotlib
 protobuf==3.20.1
 langid
-
+click
 
