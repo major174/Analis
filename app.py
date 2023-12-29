@@ -22,6 +22,10 @@ import streamlit as st
 
 
 
+import tensorflow as tf
+
+
+
 # Définir la taille de la police souhaitée
 font_size = "30px"
 
@@ -49,6 +53,17 @@ if st.button('Analyse sentiment',type='primary'):
     
   
     if language=="English":
+        # ID du fichier sur Google Drive
+        file_id ='1bS3R3rSyWLJswJI0M_qD1L1y-UGkNnjU'
+
+        # URL de l'API Google Drive pour télécharger le fichier
+        url = f'https://drive.google.com/uc?id={file_id}'
+
+        # Utilisez la méthode `tf.keras.utils.get_file` pour charger le modèle directement depuis Google Drive
+        model_path = tf.keras.utils.get_file('modelestop1.h5', origin=url, extract=False, cache_subdir='/content/drive/MyDrive/model/')
+
+        # Chargez le modèle
+        model = tf.keras.models.load_model(model_path,compile=False)
         
         with open('./tokenizer.json', 'r', encoding='utf-8') as json_file:
                 
@@ -69,7 +84,7 @@ if st.button('Analyse sentiment',type='primary'):
                 #sentences = st.text_input("Enter text in French")
         processed_data = my_reprocess([sentences])
 
-        model = tf.keras.models.load_model('./model/modelestop1.h5',compile=False)
+        #model = tf.keras.models.load_model('./model/modelestop1.h5',compile=False)
         y_pred = model.predict(processed_data)
 
         # Interpret the prediction
@@ -88,7 +103,19 @@ if st.button('Analyse sentiment',type='primary'):
 
     if language=="French" :
         
-        def my_reprocess(sentences, max_len=35):
+        
+        # ID du fichier sur Google Drive
+        file_id = '1bS3R3rSyWLJswJI0M_qD1L1y-UGkNnjU'
+
+        # URL de l'API Google Drive pour télécharger le fichier
+        url = f'https://drive.google.com/uc?id={file_id}'
+
+        # Utilisez la méthode `tf.keras.utils.get_file` pour charger le modèle directement depuis Google Drive
+        model_path = tf.keras.utils.get_file('modele_french.h5', origin=url, extract=False, cache_subdir='/content/drive/MyDrive/model/')
+
+        # Chargez le modèle
+        model = tf.keras.models.load_model(model_path,compile=False)
+        def my_reprocess(sentences, max_len=21):
                     X =  tokenizers.texts_to_sequences(sentences)
 
                         # Pad the sequences
@@ -107,7 +134,7 @@ if st.button('Analyse sentiment',type='primary'):
             #sentences = st.text_input("Enter text in French")
         processed_data = my_reprocess([sentences])
 
-        model = tf.keras.models.load_model('./model/modele_french.h5',compile=False)
+        #model = tf.keras.models.load_model('./model/modele_french.h5',compile=False)
         y_pred = model.predict(processed_data)
 
                 # Interpret the prediction
