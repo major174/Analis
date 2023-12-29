@@ -1,1 +1,12 @@
 
+streamlit
+tensorflow
+keras
+keras-tuner
+nltk
+langdetect
+numpy
+pandas
+matplotlib
+protobuf==3.20.1
+langid
