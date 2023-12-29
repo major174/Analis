@@ -3,9 +3,8 @@ from logging import PlaceHolder
 import streamlit as st 
 from tensorflow.keras.models import load_model
 from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 import streamlit  # 👈 Add the caching decorator
-import tensorflow as tf 
 import nltk
 nltk.download('stopwords')
 import numpy as np
@@ -18,10 +17,6 @@ st.title('Sentiment Analysis English vs French')
 sentences = st.text_area("", placeholder="Entrer votre text")
 #sentences=text_cleaning(sentences)
 from util import config
-import streamlit as st
-
-
-
 import tensorflow as tf
 
 
